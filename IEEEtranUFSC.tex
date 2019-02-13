@@ -1,0 +1,402 @@
+%%------------------------------------------------------
+%
+%% UNIVERSIDADE FEDERAL DE SANTA CATARINA - UFSC
+%
+%% Prof.: Wyllian B. da Silva
+%%
+%% Template: estilo IEEEtran [paper com duas colunas]
+%% Adaptado de: https://ieeeauthorcenter.ieee.org/create-your-ieee-article/use-authoring-tools-and-ieee-article-templates/ieee-article-templates/templates-for-transactions/
+%               https://ctan.org/tex-archive/macros/latex/contrib/IEEEtran?lang=en
+
+%% Instruções: http://mirrors.ctan.org/macros/latex/contrib/IEEEtran/IEEEtran_HOWTO.pdf
+%%
+%% Recomendações:
+%% Utilize o Edito Kile (SO Linux)
+%% Certifique-se de que a codificação de caracteres utilizada é a UTF-8
+
+
+
+
+
+\documentclass[journal]{IEEEtran}
+
+
+%%------------------------------------------------------
+%% Packages
+%%------------------------------------------------------
+\usepackage[T1]{fontenc}           %% Codificação de caracteres
+\usepackage[utf8]{inputenc}        %% Codificação de caracteres (conversão automática dos acentos)
+\usepackage[dvips]{graphicx}       %% para a macro includegraphics 
+\usepackage[english,brazil]{babel} %% PT_BR e EN (o último define a prioridade no arquivo)
+\usepackage{pgf}                   %% macro para criar gráficos
+\usepackage{epsfig}                %% or use the epsfig package if you prefer to use the old commands
+\usepackage{graphics}              %% use the graphics package for simple commands
+\usepackage{graphicx}              %% or use the graphicx package for more complicated commands
+\usepackage{epstopdf}              %% enable EPS (convert to PDF)
+\usepackage{float}                 %% float environment
+\usepackage{eqparbox}              %% to define a group of boxes 
+\usepackage{hyphenat}              %% prevent hyphenation
+\usepackage{hyperref}              %% enalbe one-click link
+
+% \usepackage{showframe} %% just for the example
+
+% \usepackage[sort,compress]{cite} %% disable if natbib package is activated
+\usepackage[numbers,sort&compress,square]{natbib} %% e.g., [2-5]
+
+
+
+%%------------------------------------------------------
+%% Definitions
+%%------------------------------------------------------
+
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+%% Can use something like this to put references on a page
+%% by themselves when using endfloat and the captionsoff option.
+\ifCLASSOPTIONcaptionsoff
+  \newpage
+\fi
+
+
+%%----------------- Definindo as variáveis com números
+\makeatletter
+%
+\newcommand{\prenome}{\afterassignment\prenome@aux\count0=}
+\newcommand{\prenome@aux}{\csname prenome\the\count0\endcsname}
+%
+\newcommand{\nomedomeio}{\afterassignment\nomedomeio@aux\count0=}
+\newcommand{\nomedomeio@aux}{\csname nomedomeio\the\count0\endcsname}
+%
+\newcommand{\sobrenome}{\afterassignment\sobrenome@aux\count0=}
+\newcommand{\sobrenome@aux}{\csname sobrenome\the\count0\endcsname}
+\makeatother
+%%%%%
+
+%%----------------- Configurações de hyperlinks
+%% Não decorado, sem destaque
+\hypersetup{
+  colorlinks=false,
+  pdfborder={0 0 0},
+}
+
+
+
+
+%%------------------------------------------------------
+%% Configurações
+%%------------------------------------------------------
+
+%%----------------- Título
+\title                                                {Template Para Escrita de Paper no Formato IEEE Journals, Utilizando a Classe IEEEtran.cls}
+
+\newcommand{\emailautor}                              {seuemail@grad.ufsc.br}
+
+\newcommand{\siglaRevista}                            {UFSC}
+
+\newcommand{\Revista}                                 {Universidade Federal de Santa Catarina (UFSC)}
+
+
+
+%%----------------- Autor Principal (a acenturação deverá ser indireta)
+\newcommand{\prenomePrincipal}                        {Paul}
+\newcommand{\nomedomeioPrincipal}                     {Adrien Maurice}
+\newcommand{\sobrenomePrincipal}                      {Dirac}
+
+
+%%----------------- Demais Autores
+%% Segundo autor (a acenturação deverá ser indireta)
+\expandafter\newcommand\csname prenome2\endcsname     {Niels}
+\expandafter\newcommand\csname nomedomeio2\endcsname  {Henrik David}
+\expandafter\newcommand\csname sobrenome2\endcsname   {Bohr}
+
+
+%% Terceiro autor (a acenturação deverá ser indireta)
+\expandafter\newcommand\csname prenome3\endcsname     {Cesare}
+\expandafter\newcommand\csname nomedomeio3\endcsname  {Mansueto Giulio}
+\expandafter\newcommand\csname sobrenome3\endcsname   {Lattes}
+
+%% Quarto autor (a acenturação deverá ser indireta)
+\expandafter\newcommand\csname prenome4\endcsname     {Erwin}
+\expandafter\newcommand\csname nomedomeio4\endcsname  {Rudolf Josef Alexander}
+\expandafter\newcommand\csname sobrenome4\endcsname   {Schr\"odinger}
+
+%% Quinto autor (a acenturação deverá ser indireta)
+\expandafter\newcommand\csname prenome5\endcsname     {Werner}
+\expandafter\newcommand\csname nomedomeio5\endcsname  {Karl}
+\expandafter\newcommand\csname sobrenome5\endcsname   {Heisenberg}
+
+
+
+
+%%------------------------------------------------------
+%% Autor(es)
+
+
+%%----------------- Apenas um autor
+\author{\IEEEauthorblockN{\prenomePrincipal~\nomedomeioPrincipal~\sobrenomePrincipal\IEEEauthorrefmark{1}}
+
+\IEEEauthorblockA{\IEEEauthorrefmark{1}Universidade Federal de Santa Catarina (UFSC)}% <-this % stops an unwanted space
+%%
+\thanks{\Revista. Correspond\^encia ao autor: \prenomePrincipal~\nomedomeioPrincipal~\sobrenomePrincipal~(email: \emailautor).}}
+
+
+
+% %%----------------- Vários Autores
+% \author{\IEEEauthorblockN{\prenomePrincipal~\nomedomeioPrincipal~\sobrenomePrincipal\IEEEauthorrefmark{1}, 
+% \prenome2~\nomedomeio2~\sobrenome2\IEEEauthorrefmark{2}, 
+% \prenome3~\nomedomeio3~\sobrenome3\IEEEauthorrefmark{3}, 
+% \prenome4~\nomedomeio4~\sobrenome4\IEEEauthorrefmark{3}, and 
+% \prenome5~\nomedomeio5~\sobrenome5\IEEEauthorrefmark{4},~\IEEEmembership{Fellow,~IEEE}}
+% 
+% \IEEEauthorblockA{\IEEEauthorrefmark{1}Universidade Federal de Santa Catarina (UFSC)}
+% 
+% \IEEEauthorblockA{\IEEEauthorrefmark{2}School of Electrical and Computer Engineering, Georgia Institute of Technology, Atlanta, GA 30332 USA}
+% 
+% \IEEEauthorblockA{\IEEEauthorrefmark{3}Starfleet Academy, San Francisco, CA 96678 USA}
+% 
+% \IEEEauthorblockA{\IEEEauthorrefmark{4}Tyrell Inc., 123 Replicant Street, Los Angeles, CA 90210 USA}% <-this % stops an unwanted space
+% %%
+% \thanks{\Revista~(\siglaRevista). Correspond\^encia ao autor: \prenomePrincipal~\nomedomeioPrincipal~\sobrenomePrincipal~(email: \emailautor).}}
+
+
+
+%%------------------------------------------------------
+%% Cabeçalho
+\markboth{\MakeUppercase{\Revista}}%% acentuação indireta
+%% Apenas um autor:
+{\sobrenomePrincipal: \MakeUppercase{\Revista}}
+%% Mais de um autor:
+% {\sobrenomePrincipal: \MakeLowercase{\textit{et al.}}: \Revista}
+
+
+%%------------------------------------------------------
+%% Abstract
+\IEEEtitleabstractindextext{
+
+  {\selectlanguage{brazil}
+    \begin{abstract}
+    Escreva aqui o seu resumo.
+    \end{abstract}
+    %%----------------- Keywords
+    \renewcommand\IEEEkeywordsname{Palavras-chave} %% Palavras-chave ao invés de 'Index Terms'
+    \begin{IEEEkeywords}
+    Redes Sem Fio, QoS, QoE, PDI, Avalição Objetiva de Qualidade de Imagem e Vídeo, Sistemas de Controle, Sistemas de Automação, Propagação e Ondas, Eletrônica de Potência, Compatibilidade Eletromagnética, Sensores e Atuadores.
+    \end{IEEEkeywords}
+  }
+
+  {\selectlanguage{english}
+    \begin{abstract}
+    The abstract goes here.
+    \end{abstract}
+    %%----------------- Keywords
+    \begin{IEEEkeywords}
+    Wireless Networks, QoS, QoE, PDI, Objective Image and Video Quality Assessment , Control Systems, Automation System, Wave Propagation, Power Electronics, Electromagnetic Compatibility, Sensors and Actuators.
+    \end{IEEEkeywords}
+  }
+}
+
+
+
+
+
+
+
+
+\begin{document}
+
+
+
+%%------------------------------------------------------
+%% Inserção de informações
+\maketitle
+\IEEEdisplaynontitleabstractindextext
+\IEEEpeerreviewmaketitle
+
+
+%%------------------------------------------------------
+%% Section
+\section{Introdução}
+
+\IEEEPARstart{E}{ste} é um \textit{template} adaptado para publicação de trabalhos na \siglaRevista, cujo intuito é introduzir orientações na produção de \textit{papers} no formato IEEE \textsc{Transactions}, utilizando a linguagem de marcação de texto \LaTeX, por meio da classe \nohyphens{IEEEtran.cls} versão 1.8b ou posterior. Recomenda-se utilizar o editor {\ttfamily\fontsize{9}{9}\selectfont\texttt{Kile}} (Sistema Operacional Linux), configurado com o tipo de codificação binária Unicode {\ttfamily\fontsize{9}{9}\selectfont\texttt{UTF-8}} (\textit{8-bit Unicode Transformation Format}). Escreva no mínimo quatro (4) páginas e, no máximo, seis (6) páginas, excluindo-se o(s) apêndice(s).
+
+A Figura~\ref{fig:fig_exemple} é um simples exemplo, utilizando inserção de figura, cuja dimensão da figura está em função da largura da coluna, por meio do parâmetro {\ttfamily\fontsize{9}{9}\selectfont\texttt{\string\columnwidth}}, ajustado em 23\%, \textit{i.e.}, ``{\ttfamily\fontsize{9}{9}\selectfont\texttt{width=.23\string\columnwidth}}''. Para uma melhor organização, a pasta ``{\ttfamily\fontsize{9}{9}\selectfont\texttt{figs}}'' será utilizada para armazenar as figuras. Os parâmetros {\ttfamily\fontsize{9}{9}\selectfont\texttt{!htbp}}, os quais significam aqui (h), topo (t), embaixo (b) e página com objetos flutuantes (p), respectivamente. Este parâmetros são utilizados segundo uma ordem de posicionamento da figura, neste caso, da esquerda para a direita, em que o símbolo ``{\ttfamily\fontsize{9}{9}\selectfont\texttt{!}}'' força a prioridade neste sentido.
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=.23\columnwidth]{figs/brasao_UFSC_vertical_sigla.pdf}
+\caption{Escreva a legenda da figura aqui.}
+\label{fig:fig_exemple}
+\end{figure}
+
+Crie figuras em alta qualidade, com no mínimo 300 DPI (\textit{Dots Per Inch}). Recomenda-se utilizar o formato PDF (\textit{Portable Document Format}), ao invés de formatos comprimidos.
+
+A Tabela~\ref{tab:exemplo} é um simples exemplo de tabela construída no ambiente {\ttfamily\fontsize{9}{9}\selectfont\texttt{table}}. Aqui também é possível utilizar os parâmetros {\ttfamily\fontsize{9}{9}\selectfont\texttt{!htbp}}, tal qual fora descrito para o ambiente {\ttfamily\fontsize{9}{9}\selectfont\texttt{figure}}.
+\begin{table}[!htbp]
+\renewcommand{\arraystretch}{1.3}
+\caption{Exemplo de uma Tabela}
+\label{tab:exemplo}
+\centering
+\begin{tabular}{|c||c|}
+\hline
+Um & Dois\\
+\hline
+Três & Quatro\\
+\hline
+\end{tabular}
+\end{table}
+
+Há outras maneiras mais elaboradas de criar tabelas em \LaTeX.
+
+Este é um exemplo de citação com uma única referência \cite{Spiegel:1998} e com duas citações \cite{SILVA:2013,Oliveira:2016}. A seguir, segue um exemplo com múltiplas citações \cite{Einstein:1917,Lattes:1947,Ahmed:1974}. Observe que esta última citação está na forma compacta e ordenada, pois o pacote {\ttfamily\fontsize{9}{9}\selectfont\texttt{natbib}} foi configurado com os parâmetros ``{\ttfamily\fontsize{9}{9}\selectfont\texttt{numbers,sort\&compress,square}}''. Estilos de referências podem ser encontrados em \href{https://verbosus.com/bibtex-style-examples.html}{https://verbosus.com/bibtex-style-examples.html} \cite{article:1993,book:1993,booklet:1993,conference:1993,inbook:1993,incollection:1993,manual:1993,mastersthesis:1993,misc:1993,phdthesis:1993,proceedings:1993,techreport:1993,unpublished:1993,patent:1993}. Implemente o acesso a URLs com um clique por meio da macro {\ttfamily\fontsize{9}{9}\selectfont\texttt{\string\href}}, \textit{e.g.}, {\ttfamily\fontsize{9}{9}\selectfont\texttt{\string\href\{http://ufsc.br\}\{http://ufsc.br\}}}. Há duas formas de escrever suas referências: (i) construindo o arquivo {\ttfamily\fontsize{9}{9}\selectfont\texttt{bib}}; (ii) conteúdo de referência incorporado ao arquivo \TeX. A primeira opção pode ser implementada utilizando um editor de referências, \textit{e.g.}, JabRef (\href{http://www.jabref.org}{http://www.jabref.org}). Uma vez que o arquivo {\ttfamily\fontsize{9}{9}\selectfont\texttt{bib}} esteja editado, deve-se utilizar as macros a seguir para habilitar as referências citadas ao longo do texto.
+
+{\fontsize{8}{8}\selectfont
+\begin{verbatim}
+\bibliographystyle{IEEEtran} % Estilo da referência
+\bibliography{references}    % Caminho do arquivo
+                             %   (sem extensão)
+\end{verbatim}
+}
+
+A segunda opção deve ser posicionada no final do arquivo \TeX, geralmente, após a conclusão ou apêndices. A seguir, apresenta-se um exemplo desse tipo de construção. O parâmetro {\ttfamily\fontsize{9}{9}\selectfont\texttt{10}} em {\ttfamily\fontsize{9}{9}\selectfont\texttt{\string\begin\{thebibliography\}\{10\}}}, é usado para orientar a configuração da margem deslocada à direita, o qual está relacionado com a quantidade de referências. 
+
+{\fontsize{8}{8}\selectfont
+\begin{verbatim}
+\begin{thebibliography}{10} 
+  \bibitem{Reinelt:1991}
+    Reinelt, G. 1991. {\em The Traveling 
+    Salesman -- Computational Solutions for TSP 
+    Applications.} Berlin: Springer Verlag.
+
+  \bibitem{Caprara:1997} 
+    Caprara, A. 1997. Sorting by reversals is 
+    difficult. In: {\em Proceedings of the 
+    First Annual International Conference on 
+    Computational Molecular Biology 
+    (RECOMB 97),} New York: ACM.  pp. 75-83.
+
+  \bibitem{Huynen:1998} 
+    Huynen, M.~A. and Bork, P. 1998. Measuring 
+    genome evolution. {\em Proceedings of the 
+    National Academy of Sciences USA} 
+    95:5849--5856.
+
+  \bibitem{Kopka:1999}
+    H.~Kopka and P.~W. Daly, \emph{A Guide to 
+    \LaTeX}, 3rd~ed. Harlow, 
+    England: Addison-Wesley, 1999.
+\end{thebibliography}
+\end{verbatim}
+}
+
+A partir da referência \cite{article:1993}, há diversos exemplos de estilos. \textbf{Observação:} \textit{os termos em negrito são usados para destacar o tipo de referência, não devem ser configurados dessa maneira}.
+
+Além de seção ({\ttfamily\fontsize{9}{9}\selectfont\texttt{\string\section\{\}}}), na sequência são apresentados dois exemplos de subdivisões textuais: (i) subseção ({\ttfamily\fontsize{9}{9}\selectfont\texttt{\string\subsection\{\}}}) e (ii) subsubseção ({\ttfamily\fontsize{9}{9}\selectfont\texttt{\string\subsubsection\{\}}}). Ao utilizar este \textit{template}, implemente somente até o nível três (subsubseção).
+
+%%------------------------------------------------------
+%% Subsection
+\subsection{Título da Subseção}
+Texto da subseção.
+
+%%------------------------------------------------------
+%% Subsubsection
+\subsubsection{Título da Subsubseção}
+texto da subsubseção.
+
+Evite concluir uma seção e suas subdivisões (subseção e subsubseção) de maneira abrupta com figuras, tabelas ou outros elementos gráficos, encerre-a de maneira textual. 
+
+Apresente nesta seção os problemas encontrados na sua pesquisa e aponte (destaque) resumidamente as soluções encontradas (contribuições). Isto irá preparar e chamar a atenção do leitor quanto ao conteúdo que será abordado nas próximas seções.
+
+Ainda nesta seção, faça uma descrição do ``Estado da Arte'' ou trabalhos relacionados com os métodos e implementações adotadas na sua pesquisa ou trabalho.
+
+No final da seção, apresente sucintamente as seções restantes.
+
+
+
+
+
+%%------------------------------------------------------
+%% Section
+\section{Metodologia}
+Esta seção descreve os materiais e métodos ou ainda o referencial teórico abordado.
+
+
+%%------------------------------------------------------
+%% Section
+\section{Resultados ou Resultados Experimentais ou Resultados Esperados}
+Nesta seção são apresentados os resultados de simulação e/ou experimentas do seu trabalho. Caso não tenham realizados experimentos ou obtidos resultados concretos, pode-se descrever os resultados esperados.
+
+
+%%------------------------------------------------------
+%% Section
+\section{Conclusão ou Conclusões}
+Escreva a(s) sua(s) conclusão(ões) nesta seção.
+
+
+
+%%------------------------------------------------------
+%% Appedix (if necessary)
+\appendices
+
+%%----------------- Apêndice A
+\section{Título do Apêndice}
+Texto da seção. Utilize o apêndice somente quando for necessário.
+
+
+%%----------------- Apêndice B
+\section{Título do Apêndice}
+Texto da seção do apêndice. 
+
+%%----------------- Apêndice C
+\section{} %% sem título
+Texto da seção do apêndice. Observe que esta seção não apresenta título, cuja macro foi configurada como {\ttfamily\fontsize{9}{9}\selectfont\texttt{\string\section\{\}}}.
+
+
+
+%%------------------------------------------------------
+%% Section (no numbering, use section* for acknowledgment)
+%% UFSC: no necessary
+% \section*{Acknowledgment}
+% The authors would like to thank...
+
+
+
+%%------------------------------------------------------
+%% References (Option 1): extern file
+%% Edit with JabRef, for instance
+\bibliographystyle{IEEEtran} %% Estilo da referência
+\bibliography{references}    %% Caminho do arquivo (sem extensão)
+
+
+
+% %%------------------------------------------------------
+% %% References (Option 2): incorporeted
+% 
+% \begin{thebibliography}{10} 
+% 
+%   \bibitem{Kopka:1999}
+%     H.~Kopka and P.~W. Daly, \emph{A Guide to
+%     \LaTeX}, 3rd~ed. Harlow, 
+%     England: Addison-Wesley, 1999.
+% 
+%   \bibitem{Huynen:1998} 
+%     Huynen, M.~A. and Bork, P. 1998. Measuring 
+%     genome evolution. {\em Proceedings of the 
+%     National Academy of Sciences USA} 
+%     95:5849--5856.
+% 
+%   \bibitem{Caprara:1997} 
+%     Caprara, A. 1997. Sorting by reversals is 
+%     difficult. In: {\em Proceedings of the 
+%     First Annual International Conference on 
+%     Computational Molecular Biology 
+%     (RECOMB 97),} New York: ACM.  pp. 75-83.
+% 
+%   \bibitem{Reinelt:1991}
+%     Reinelt, G. 1991. {\em The Traveling 
+%     Salesman -- Computational Solutions for TSP 
+%     Applications.} Berlin: Springer Verlag.
+% 
+% \end{thebibliography}
+
+
+
+\end{document}
